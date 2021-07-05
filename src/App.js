@@ -9,12 +9,14 @@ import {
   Grid,
   theme,
 } from '@chakra-ui/react';
+import Navigation from './components/Nav.jsx';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { Logo } from './Logo';
 
 function App() {
   return (
     <ChakraProvider theme={theme}>
+      <Navigation  />
       <Box textAlign="center" fontSize="xl">
         <Grid minH="100vh" p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
