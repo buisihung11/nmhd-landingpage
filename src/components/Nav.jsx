@@ -29,22 +29,29 @@ export default function Navigation({ navStyle = {} }) {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box zIndex="banner" position="absolute" w="100%" {...navStyle} >
+    <Box
+      bg="#3B0707"
+      zIndex="banner"
+      position="absolute"
+      w="100%"
+      {...navStyle}
+    >
       <Flex
-        bg={"transparent"}
+        bg={'transparent'}
         color={useColorModeValue('gray.600', 'white')}
         minH={'60px'}
-        py={{ base: 2 }}
-        px={{ base: 20 }}
+        py={[4, 8]}
+        px={[6, 15]}
         align={'center'}
       >
         <Flex
           flex={{ base: 1, md: 'auto' }}
-          ml={{ base: -2 }}
+          ml={{ base: 0 }}
           display={{ base: 'flex', md: 'none' }}
         >
           <IconButton
             onClick={onToggle}
+            color="white"
             icon={
               isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
             }
@@ -54,11 +61,11 @@ export default function Navigation({ navStyle = {} }) {
         </Flex>
         <Flex
           flex={{ base: 1 }}
-          justify={{ base: 'center', md: 'space-between' }}
+          justify={{ base: 'flex-end', md: 'space-between' }}
         >
           <Image
-            w={['77px', '77px', '172PX', '172PX']}
-            h={['55px', '55px', '122px', '122px']}
+            w={['77px', '77px', '90px', '90px']}
+            h={['55px', '55px', '64px', '64px']}
             objectFit="cover"
             src={logo}
             alt="NMHD Logo"
@@ -180,6 +187,9 @@ const MobileNavItem = ({ label, children, href }) => {
         }}
       >
         <Text
+          _hover={{
+            color: 'red',
+          }}
           fontWeight={600}
           color={useColorModeValue('gray.600', 'gray.200')}
         >
@@ -208,7 +218,7 @@ const MobileNavItem = ({ label, children, href }) => {
           {children &&
             children.map(child => (
               <Link key={child.label} py={2} href={child.href}>
-                {child.label}
+                <Text>{child.label}</Text>
               </Link>
             ))}
         </Stack>
@@ -220,18 +230,18 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: 'Trang chủ',
-    href: '',
+    href: '/',
   },
   {
     label: 'Sản phẩm',
-    href: '',
+    href: '/san-pham',
   },
   {
     label: 'Giới thiệu',
-    href: '',
+    href: '/gioi-thieu',
   },
   {
     label: 'Tin tức',
-    href: '',
+    href: '/tin-tuc',
   },
 ];

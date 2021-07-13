@@ -8,6 +8,23 @@ const theme = extendTheme({
   colors: {
     primary: '#E92529',
   },
+  components: {
+    Button: {
+      variants: {
+        primary: {
+          bg: '#E92529',
+          boxShadow: '0 0 2px 2px #efdfde',
+          _hover: {
+            bg: '#e92529d1',
+          },
+        },
+        defaultProps: {
+          variant: 'primary',
+        },
+        // 4. We can override existing variants
+      },
+    },
+  },
 });
 
 function App() {
