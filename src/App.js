@@ -3,6 +3,8 @@ import { Box, ChakraProvider, extendTheme } from '@chakra-ui/react';
 import Navigation from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
 import HomePage from './pages/Home/index.js';
+import ProductPage from './pages/Products/index.jsx';
+
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 const theme = extendTheme({
   colors: {
@@ -36,6 +38,7 @@ function App() {
         <Box bg="gray.100">
           <Switch>
             <Route exact path="/" component={HomePage} />
+            <Route exact path="/san-pham" component={ProductPage} />
           </Switch>
         </Box>
         {/* END CHILDREN */}
