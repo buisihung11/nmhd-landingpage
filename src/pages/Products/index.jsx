@@ -48,7 +48,7 @@ const ProductListPage = () => {
           {PRODUCT_MASTERS.map(master => (
             <Box w="full">
               <HStack w="full" textAlign="left" mb="6">
-                <Box w="80%">
+                <Box w={['80%', '60%']}>
                   <Heading
                     fontSize={['xl', '2xl', '3xl']}
                     textAlign="left"
@@ -64,15 +64,11 @@ const ProductListPage = () => {
                   <ProductCard {...prod} />
                 ))}
               </SimpleGrid>
-              <Button
-                float="right"
-                mt={6}
-                color="white"
-                rounded="none"
-                variant="primary"
-              >
-                Xem thêm
-              </Button>
+              <Box w="full" textAlign={['center', 'center', 'end']}>
+                <Button mt={6} color="white" rounded="none" variant="primary">
+                  Xem thêm
+                </Button>
+              </Box>
             </Box>
           ))}
         </VStack>
