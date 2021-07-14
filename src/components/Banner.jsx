@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import { Box, Image } from '@chakra-ui/react';
 
 import banner1 from '../assets/images/banner1.jpg';
+import MySlider from './MySlider';
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -54,7 +55,7 @@ const settings = {
 
 const Banner = () => {
   return (
-    <Slider {...settings}>
+    <MySlider {...settings}>
       <Image
         w="100vw"
         h="100vh"
@@ -76,7 +77,7 @@ const Banner = () => {
         src={banner1}
         alt="Segun Adebayo"
       />
-    </Slider>
+    </MySlider>
   );
 };
 

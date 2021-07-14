@@ -6,6 +6,7 @@ import HomePage from './pages/Home/index.js';
 import ProductPage from './pages/Products/index.jsx';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import ProductDetailPage from './pages/Products/ProductDetail.jsx';
 const theme = extendTheme({
   colors: {
     primary: '#E92529',
@@ -15,6 +16,8 @@ const theme = extendTheme({
       variants: {
         primary: {
           bg: '#E92529',
+          rounded: 'none',
+          color: 'white',
           boxShadow: '0 0 2px 2px #efdfde',
           _hover: {
             bg: '#e92529d1',
@@ -24,6 +27,12 @@ const theme = extendTheme({
           variant: 'primary',
         },
         // 4. We can override existing variants
+      },
+    },
+    Divider: {
+      baseStyle: {
+        borderBottomWidth: '2px',
+        borderColor: 'black',
       },
     },
   },
@@ -39,6 +48,11 @@ function App() {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/san-pham" component={ProductPage} />
+            <Route
+              exact
+              path="/san-pham/:seoName"
+              component={ProductDetailPage}
+            />
           </Switch>
         </Box>
         {/* END CHILDREN */}
