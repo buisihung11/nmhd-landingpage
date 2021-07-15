@@ -16,7 +16,6 @@ import {
   Image,
 } from '@chakra-ui/react';
 import logo from '../assets/images/logo.png';
-
 import {
   HamburgerIcon,
   CloseIcon,
@@ -63,13 +62,15 @@ export default function Navigation({ navStyle = {} }) {
           flex={{ base: 1 }}
           justify={{ base: 'flex-end', md: 'space-between' }}
         >
-          <Image
-            w={['77px', '77px', '90px', '90px']}
-            h={['55px', '55px', '64px', '64px']}
-            objectFit="cover"
-            src={logo}
-            alt="NMHD Logo"
-          />
+          <Link to="/">
+            <Image
+              w={['77px', '77px', '90px', '90px']}
+              h={['55px', '55px', '64px', '64px']}
+              objectFit="cover"
+              src={logo}
+              alt="NMHD Logo"
+            />
+          </Link>
           <Flex
             display={{ base: 'none', md: 'flex' }}
             alignItems="center"

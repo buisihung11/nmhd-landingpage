@@ -53,9 +53,9 @@ const settings = {
   customPaging: i => <Box w="4" h="4" color="primary" />,
 };
 
-const Banner = () => {
+const Banner = ({ color }) => {
   return (
-    <MySlider {...settings}>
+    <MySlider {...settings} color={color}>
       <Image
         w="100vw"
         h="100vh"

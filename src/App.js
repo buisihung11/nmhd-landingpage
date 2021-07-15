@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ProductDetailPage from './pages/Products/ProductDetail.jsx';
 import CheckoutPage from './pages/Checkout/index.jsx';
 import PhoneRing from './components/PhoneRing/PhoneRing.jsx';
+import NewsPage from './pages/News/index.jsx';
 const theme = extendTheme({
   colors: {
     primary: '#E92529',
@@ -73,6 +74,7 @@ function App() {
               component={ProductDetailPage}
             />
             <Route exact path="/thanh-toan" component={CheckoutPage} />
+            <Route exact path="/tin-tuc" component={NewsPage} />
           </Switch>
         </Box>
         {/* END CHILDREN */}
