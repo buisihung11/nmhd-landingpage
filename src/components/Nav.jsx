@@ -7,7 +7,6 @@ import {
   Stack,
   Collapse,
   Icon,
-  Link,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -24,6 +23,7 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
+import Link from './Link';
 
 export default function Navigation({ navStyle = {} }) {
   const { isOpen, onToggle } = useDisclosure();
@@ -99,7 +99,7 @@ const DesktopNav = () => {
             <PopoverTrigger>
               <Link
                 mx="4"
-                href={navItem.href ?? '#'}
+                to={navItem.href ?? '#'}
                 fontSize={'lg'}
                 textTransform="uppercase"
                 fontWeight={500}
@@ -123,7 +123,7 @@ const DesktopNav = () => {
 const DesktopSubNav = ({ label, href, subLabel }) => {
   return (
     <Link
-      href={href}
+      to={href}
       role={'group'}
       display={'block'}
       p={2}
@@ -179,7 +179,7 @@ const MobileNavItem = ({ label, children, href }) => {
       <Flex
         py={2}
         as={Link}
-        href={href ?? '#'}
+        to={href ?? '#'}
         justify={'space-between'}
         align={'center'}
         _hover={{
@@ -217,7 +217,7 @@ const MobileNavItem = ({ label, children, href }) => {
         >
           {children &&
             children.map(child => (
-              <Link key={child.label} py={2} href={child.href}>
+              <Link key={child.label} py={2} to={child.href}>
                 <Text>{child.label}</Text>
               </Link>
             ))}

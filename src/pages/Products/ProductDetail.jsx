@@ -21,6 +21,7 @@ import MySlider from '../../components/MySlider';
 import { stringToSlug } from '../../utils';
 import { PRODUCTS_HOME } from '../Home';
 import ProductCard from '../../components/ProductCard';
+import Link from '../../components/Link';
 
 const settings = {
   dots: false,
@@ -75,7 +76,11 @@ const ProductDetailPage = () => {
 
           <Box flex={1} mt={['4', '0']}>
             <VStack alignItems="start">
-              <Container textAlign={['center', 'left']} px={0}>
+              <Container
+                maxW="container.xl"
+                textAlign={['center', 'left']}
+                px={0}
+              >
                 <Heading
                   fontSize={['xl', '2xl']}
                   fontFamily={'body'}
@@ -111,7 +116,7 @@ const ProductDetailPage = () => {
                 <Text>Giá sỉ liên hệ: 0915.428.829 (Chị Nga)</Text>
               </Box>
               <Divider />
-              <Container px={0}>
+              <Container maxW="container.xl" px={0}>
                 <Box textAlign="left" mb={2}>
                   <HStack>
                     <Text>Danh mục: </Text>
@@ -130,7 +135,9 @@ const ProductDetailPage = () => {
                     <Icon w={10} h={10} as={AiFillFacebook} />
                   </HStack>
                   <Spacer />
-                  <Button variant="primary">ĐẶT DỊCH VỤ</Button>
+                  <Link to={`/thanh-toan`}>
+                    <Button variant="primary">ĐẶT DỊCH VỤ</Button>
+                  </Link>
                 </Flex>
               </Container>
             </VStack>
@@ -138,7 +145,7 @@ const ProductDetailPage = () => {
         </Flex>
       </Box>
 
-      <Container maxW="container.xl" px={0} mt={[4, 8]}>
+      <Container maxW="100%" px={0} mt={[4, 8]}>
         <HStack w="full" textAlign="left" mb="6">
           <Box>
             <Heading

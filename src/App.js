@@ -7,11 +7,28 @@ import ProductPage from './pages/Products/index.jsx';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ProductDetailPage from './pages/Products/ProductDetail.jsx';
+import CheckoutPage from './pages/Checkout/index.jsx';
+import PhoneRing from './components/PhoneRing/PhoneRing.jsx';
 const theme = extendTheme({
   colors: {
     primary: '#E92529',
   },
   components: {
+    Link: {
+      _hover: {
+        textDecoration: 'none',
+      },
+    },
+    Input: {
+      baseStyle: {
+        field: {
+          bg: 'white',
+        },
+      },
+      defaultProps: {
+        size: 'lg',
+      },
+    },
     Button: {
       variants: {
         primary: {
@@ -45,6 +62,8 @@ function App() {
         <Navigation />
         {/* CHILDREN */}
         <Box bg="gray.100">
+          <PhoneRing />
+
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/san-pham" component={ProductPage} />
@@ -53,6 +72,7 @@ function App() {
               path="/san-pham/:seoName"
               component={ProductDetailPage}
             />
+            <Route exact path="/thanh-toan" component={CheckoutPage} />
           </Switch>
         </Box>
         {/* END CHILDREN */}

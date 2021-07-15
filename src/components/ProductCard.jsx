@@ -6,18 +6,18 @@ import {
   Text,
   Stack,
   Image,
-  Link,
 } from '@chakra-ui/react';
 import { stringToSlug } from '../utils';
+import Link from './Link';
 
 const IMAGE =
-  'https://images.unsplash.com/photo-1518051870910-a46e30d9db16?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80';
+  'https://images.unsplash.com/photo-1518051870910-a46e30d9db16?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auhref=format&fit=crop&w=1350&q=80';
 
 export default function ProductCard({ name, description, thumbnail }) {
   const slug = stringToSlug(name);
   return (
     <Center>
-      <Link href={`/san-pham/${slug}`}>
+      <Link to={`/san-pham/${slug}`}>
         <Box
           role={'group'}
           p={[0]}

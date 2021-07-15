@@ -1,7 +1,6 @@
 import {
   Box,
   Container,
-  Link,
   SimpleGrid,
   Stack,
   Text,
@@ -14,6 +13,7 @@ import {
 } from '@chakra-ui/react';
 
 import footerImage from '../assets/images/footer.jpg';
+import Link from './Link';
 
 const Logo = props => {
   return (
@@ -78,15 +78,15 @@ export default function Footer() {
       <SimpleGrid minChildWidth="150px" spacing="40px">
         <Stack align={'flex-start'}>
           <ListHeader>Theo dõi</ListHeader>
-          <Link href={'#'}>Tutorials</Link>
-          <Link href={'#'}>Pricing</Link>
-          <Link href={'#'}>Releases</Link>
+          <Link to={'#'}>Tutorials</Link>
+          <Link to={'#'}>Pricing</Link>
+          <Link to={'#'}>Releases</Link>
         </Stack>
         <Stack align={'flex-start'}>
           <ListHeader>Về chúng tôi</ListHeader>
-          <Link href={'#'}>Thông tin</Link>
-          <Link href={'#'}>Sản phẩm</Link>
-          <Link href={'#'}>Liên lạc</Link>
+          <Link to={'#'}>Thông tin</Link>
+          <Link to={'#'}>Sản phẩm</Link>
+          <Link to={'#'}>Liên lạc</Link>
         </Stack>
         <Stack align={'flex-start'}>
           <ListHeader>Hoạt động</ListHeader>
@@ -99,7 +99,7 @@ export default function Footer() {
             477 Nguyễn Huệ, khu phố 8, Phường Dương Đông, Thành phố Phú Quốc,
             Tỉnh Kiên Giang, Việt Nam
           </Text>
-          <Link href={'#'} color="primary">
+          <Link to={'#'} color="primary">
             nuocmamhongduc.com.vn
           </Link>
           <Text>nuocmamhongduc@gmail.com</Text>

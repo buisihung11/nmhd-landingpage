@@ -15,6 +15,7 @@ import ProductCard from '../../components/ProductCard';
 import { feat_1, feat_2, feat_3, feat_4 } from '../../assets/icons';
 import nuocmam_43 from '../../assets/images/products/nuocmam_43.jpg';
 import Banner from '../../components/Banner';
+import PhoneRing from '../../components/PhoneRing/PhoneRing';
 
 const FEATURE = [
   {
@@ -92,6 +93,7 @@ const HomePage = () => {
         </Box>
       </Box>
       <Box h={['50px', '100px']} />
+
       <Box w={['90%', '90%', '90%']} mx="auto" textAlign="center" fontSize="xl">
         <SimpleGrid columns={[2, 2, 3, 4]} spacing={[8]}>
           {PRODUCTS_HOME.map(prod => (
