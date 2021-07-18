@@ -140,8 +140,13 @@ const HomePage = () => {
       </Box>
       <Box h={['140px', '120px']} />
 
-      <Box w={['80%', '90%', '90%']} mx="auto" textAlign="center" fontSize="xl">
-        <SimpleGrid columns={[2, 2, 2, 3, 4]} spacing={[8, 16, 12, 16]}>
+      <Box
+        w={['80%', '80%', '80%', '90%']}
+        mx="auto"
+        textAlign="center"
+        fontSize="xl"
+      >
+        <SimpleGrid columns={[2, 2, 2, 3, 4]} spacing={[12, 10, 14, 12, 16]}>
           {PRODUCTS_HOME.map(prod => (
             <ProductCard {...prod} />
           ))}
