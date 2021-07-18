@@ -10,6 +10,7 @@ import {
 import React from 'react';
 import Banner from '../../components/Banner';
 import ProductCard from '../../components/ProductCard';
+import ScrollToTopOnMount from '../../components/ScrollToTop';
 import { PRODUCTS_HOME } from '../Home';
 
 const PRODUCT_MASTERS = [
@@ -34,32 +35,39 @@ const PRODUCT_MASTERS = [
 const ProductListPage = () => {
   return (
     <Box>
+      <ScrollToTopOnMount />
       <Box position="relative" h="100vh">
         <Banner />
       </Box>
       <Box
-        w={['90%', '90%', '90%']}
+        w={['80%', '80%', '80%', '90%']}
         mx="auto"
         textAlign="center"
         fontSize="xl"
-        py={[4, 10]}
+        py={[8, 10]}
       >
         <VStack spacing={10}>
           {PRODUCT_MASTERS.map(master => (
             <Box w="full">
               <HStack w="full" textAlign="left" mb="6">
-                <Box w={['80%', '60%']}>
+                <Box>
                   <Heading
-                    fontSize={['xl', '2xl', '3xl']}
+                    fontSize={['lg', 'xl', '2xl']}
                     textAlign="left"
                     textTransform="uppercase"
                   >
                     {master.name}
                   </Heading>
                 </Box>
-                <Divider borderColor="grey.300" borderBottomWidth={2} />
+                <Box flex={1}>
+                  <Divider />
+                </Box>
               </HStack>
-              <SimpleGrid columns={[2, 2, 3, 4]} spacing={[8]}>
+
+              <SimpleGrid
+                columns={[2, 2, 2, 3, 4]}
+                spacing={[12, 10, 14, 12, 16]}
+              >
                 {PRODUCTS_HOME?.slice(0, 4).map(prod => (
                   <ProductCard {...prod} />
                 ))}

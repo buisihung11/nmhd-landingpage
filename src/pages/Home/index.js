@@ -10,6 +10,7 @@ import {
   SimpleGrid,
   Button,
   chakra,
+  Center,
 } from '@chakra-ui/react';
 import ProductCard from '../../components/ProductCard';
 
@@ -18,6 +19,8 @@ import nuocmam_43 from '../../assets/images/products/nuocmam_43.jpg';
 import Banner from '../../components/Banner';
 import PhoneRing from '../../components/PhoneRing/PhoneRing';
 import styled from '@emotion/styled';
+import ScrollToTopOnMount from '../../components/ScrollToTop';
+import Link from '../../components/Link';
 
 const FEATURE = [
   {
@@ -53,18 +56,19 @@ const HomePage = () => {
 
   return (
     <Box pb={5}>
+      <ScrollToTopOnMount />
       <Box h="100vh">
         <Box position="relative" h="100vh">
           <Banner color={'white'} />
           <Box
             position="absolute"
-            w="40%"
+            w={[0, '50%', '50%', '50%', '40%']}
             top="50%"
             left="10%"
             display={{ base: 'none', md: 'block' }}
             transform="translate(0,-50%)"
           >
-            <Text color="white" fontWeight="bold">
+            <Text color="white" fontWeight="bold" fontSize={['md', 'lg', 'xl']}>
               <chakra.span zIndex={999} fontWeight="bold" color="primary">
                 TRĂM NĂM HƯƠNG VỊ TRUYỀN THỐNG{' '}
               </chakra.span>
@@ -89,7 +93,13 @@ const HomePage = () => {
             alignItems="center"
             justifyContent="center"
             textAlign="center"
-            divider={<StackDivider my="20px" borderColor="gray.400" />}
+            divider={
+              <StackDivider
+                my="20px"
+                maxH={['40px', 'full']}
+                borderColor="gray.400"
+              />
+            }
           >
             {FEATURE.map(({ title, description, icon }) => (
               <VStack
@@ -101,13 +111,28 @@ const HomePage = () => {
                 alignContent="center"
                 w={1 / 4}
               >
-                <Image color="black" src={icon} width="50px" height="35px" />
-                <Text fontWeight="bold" fontSize="small">
-                  {title}
-                </Text>
-                <Text mt="0" fontSize={['sm', 'sm', 'md', 'lg']}>
-                  {description}
-                </Text>
+                <Box height="40px">
+                  <Center>
+                    <Image
+                      color="black"
+                      src={icon}
+                      width="50px"
+                      height="35px"
+                    />
+                  </Center>
+                </Box>
+                <Box height={['60px', '50px', '30px']}>
+                  <Text fontWeight="bold" fontSize={['xs', 'sm']}>
+                    {title}
+                  </Text>
+                </Box>
+                <Box height={['50px', '60px', '60px', '30px']}>
+                  <Center>
+                    <Text mt="0" fontSize={['xs', 'sm', 'md', 'lg']}>
+                      {description}
+                    </Text>
+                  </Center>
+                </Box>
               </VStack>
             ))}
           </HStack>
@@ -115,13 +140,20 @@ const HomePage = () => {
       </Box>
       <Box h={['140px', '120px']} />
 
-      <Box w={['90%', '90%', '90%']} mx="auto" textAlign="center" fontSize="xl">
-        <SimpleGrid columns={[2, 2, 3, 4]} spacing={[8]}>
+      <Box w={['80%', '90%', '90%']} mx="auto" textAlign="center" fontSize="xl">
+        <SimpleGrid columns={[2, 2, 2, 3, 4]} spacing={[8, 16, 12, 16]}>
           {PRODUCTS_HOME.map(prod => (
             <ProductCard {...prod} />
           ))}
         </SimpleGrid>
-        <Button mt={6} color="white" rounded="none" variant="primary">
+        <Button
+          as={Link}
+          to="/san-pham"
+          mt={6}
+          color="white"
+          rounded="none"
+          variant="primary"
+        >
           Xem thêm
         </Button>
       </Box>

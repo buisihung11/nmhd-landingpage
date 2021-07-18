@@ -1,6 +1,7 @@
 import { Box, Container, Heading, Text } from '@chakra-ui/react';
 import React from 'react';
 import ContactShare from '../../components/ContactShare';
+import ScrollToTopOnMount from '../../components/ScrollToTop';
 
 const NewsPage = () => {
   return (
@@ -10,6 +11,7 @@ const NewsPage = () => {
       px={[5, 10]}
       pb={[20, 40]}
     >
+      <ScrollToTopOnMount />
       <Box textAlign="center">
         <Heading
           fontSize={['2xl', '3xl']}

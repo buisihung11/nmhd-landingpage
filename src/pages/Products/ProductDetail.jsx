@@ -22,6 +22,7 @@ import { stringToSlug } from '../../utils';
 import { PRODUCTS_HOME } from '../Home';
 import ProductCard from '../../components/ProductCard';
 import Link from '../../components/Link';
+import ScrollToTopOnMount from '../../components/ScrollToTop';
 
 const settings = {
   dots: false,
@@ -46,12 +47,13 @@ const ProductDetailPage = () => {
 
   return (
     <Box
-      w={['85%', '90%', '90%']}
+      w={['80%', '80%', '80%', '90%']}
       mx="auto"
       textAlign="center"
       pt={['130px', '170px']}
       pb={20}
     >
+      <ScrollToTopOnMount />
       <Box>
         <Flex spacing={[8]} flexWrap="wrap">
           <Box width={['100%', '45%']} mr={['0', '4']}>
@@ -160,7 +162,7 @@ const ProductDetailPage = () => {
             <Divider />
           </Box>
         </HStack>
-        <SimpleGrid columns={[2, 2, 3, 4]} spacing={[8]}>
+        <SimpleGrid columns={[2, 2, 2, 3, 4]} spacing={[12, 10, 14, 12, 16]}>
           {PRODUCTS_HOME?.slice(0, 8).map(prod => (
             <ProductCard {...prod} />
           ))}

@@ -6,6 +6,7 @@ import {
   Text,
   Stack,
   Image,
+  AspectRatio,
 } from '@chakra-ui/react';
 import { stringToSlug } from '../utils';
 import Link from './Link';
@@ -20,38 +21,31 @@ export default function ProductCard({ name, description, thumbnail }) {
       <Link to={`/san-pham/${slug}`}>
         <Box
           role={'group'}
-          p={[0]}
+          p={[0, 4]}
           maxW={'330px'}
-          w={'full'}
+          w={['127px', '274px']}
           bg={useColorModeValue('white', 'gray.800')}
           pos={'relative'}
           zIndex={1}
+          // height={['211px', '456px']}
+          display="flex"
+          flexDir="column"
+          _hover={{
+            boxShadow: '2xl',
+          }}
         >
-          <Box
-            rounded={'lg'}
-            pos={'relative'}
-            height={['140px', '170px', '240px']}
-            _after={{
-              transition: 'all .3s ease',
-              content: '""',
-              w: 'full',
-              h: 'full',
-              pos: 'absolute',
-              top: 5,
-              left: 0,
-              backgroundImage: `url(${thumbnail})`,
-              filter: 'blur(15px)',
-              zIndex: -1,
-            }}
-            _groupHover={{
-              _after: {
-                filter: 'blur(20px)',
-              },
-            }}
-          >
+          <Box pt={['10px', '40px']} position="relative">
+            <Image
+              w={['127px', '243px']}
+              h={['127px', '243px']}
+              rounded={'lg'}
+              mx="auto"
+              objectFit={'cover'}
+              src={thumbnail}
+            />
             <Box
-              top="20px"
-              left="20px"
+              top={["10px","20px"]}
+              left={["10px","20px"]}
               bg="white"
               p={1}
               position="absolute"
@@ -66,33 +60,27 @@ export default function ProductCard({ name, description, thumbnail }) {
                   bg: 'primary',
                 }}
                 rounded="full"
-                w="10px"
-                h="10px"
+                w={['10px', '18px']}
+                h={['10px', '18px']}
                 bg="gray.500"
               />
             </Box>
-            <Image
-              rounded={'lg'}
-              width={'full'}
-              height={'full'}
-              objectFit={'cover'}
-              src={thumbnail}
-            />
           </Box>
           <Stack
             _groupHover={{
-              boxShadow: '2xl',
               borderBottom: '2px solid red',
             }}
-            py={[2, 4]}
+            py={[1, 4]}
             px={[2, 4]}
             align={'center'}
+            flex={1}
+            justifyContent="center"
           >
             {/* <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
             Brand
           </Text> */}
             <Heading
-              fontSize={['sm', 'md', 'lg', 'xl']}
+              fontSize={['sm', 'md', 'lg', '2xl']}
               fontFamily={'body'}
               fontWeight={'bold'}
             >
@@ -102,7 +90,7 @@ export default function ProductCard({ name, description, thumbnail }) {
               <Text
                 fontWeight={500}
                 color={'primary'}
-                fontSize={['sm', 'sm', 'md', 'md']}
+                fontSize={['xs', 'xs', 'md', 'md']}
               >
                 {description}
               </Text>

@@ -40,39 +40,25 @@ export default function Navigation({ navStyle = {} }) {
         color={useColorModeValue('gray.600', 'white')}
         minH={'60px'}
         py={[4, 8]}
-        px={[6, 15]}
         align={'center'}
+        w={['90%']}
+        mx="auto"
       >
         <Flex
-          flex={{ base: 1, md: 'auto' }}
-          ml={{ base: 0 }}
-          display={{ base: 'flex', md: 'none' }}
-        >
-          <IconButton
-            onClick={onToggle}
-            color="white"
-            icon={
-              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
-            }
-            variant={'ghost'}
-            aria-label={'Toggle Navigation'}
-          />
-        </Flex>
-        <Flex
           flex={{ base: 1 }}
-          justify={{ base: 'flex-end', md: 'space-between' }}
+          justify={{ base: 'space-between' }}
         >
           <Link to="/">
             <Image
-              w={['77px', '77px', '90px', '90px']}
-              h={['55px', '55px', '64px', '64px']}
+              w={['61px', '61px', '90px', '90px']}
+              h={['43px', '43px', '64px', '64px']}
               objectFit="cover"
               src={logo}
               alt="NMHD Logo"
             />
           </Link>
           <Flex
-            display={{ base: 'none', md: 'flex' }}
+            display={{ base: 'flex', md: 'flex' }}
             alignItems="center"
             ml={10}
           >
@@ -93,17 +79,16 @@ const DesktopNav = () => {
   const linkHoverColor = useColorModeValue('primary', 'white');
 
   return (
-    <Stack direction={'row'} spacing={4}>
+    <Stack direction={'row'} spacing={[4, 8, 12]}>
       {NAV_ITEMS.map(navItem => (
         <Box key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'}>
             <PopoverTrigger>
               <Link
-                mx="4"
                 to={navItem.href ?? '#'}
-                fontSize={'lg'}
+                fontSize={['10px', 'lg']}
                 textTransform="uppercase"
-                fontWeight={500}
+                fontWeight={700}
                 color={linkColor}
                 _hover={{
                   borderBottom: `1px solid red`,
@@ -178,7 +163,7 @@ const MobileNavItem = ({ label, children, href }) => {
   return (
     <Stack spacing={4} onClick={children && onToggle}>
       <Flex
-        py={2}
+        py={4}
         as={Link}
         to={href ?? '#'}
         justify={'space-between'}

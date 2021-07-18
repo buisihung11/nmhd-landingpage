@@ -15,6 +15,7 @@ import {
 import React from 'react';
 import { AiFillFacebook } from 'react-icons/ai';
 import ContactShare from '../../components/ContactShare';
+import ScrollToTopOnMount from '../../components/ScrollToTop';
 
 const CheckoutPage = () => {
   return (
@@ -24,6 +25,7 @@ const CheckoutPage = () => {
       px={[5, 10]}
       pb={[20, 40]}
     >
+      <ScrollToTopOnMount />
       <VStack align="start" spacing={8}>
         <Heading
           fontSize={['xl', '2xl']}

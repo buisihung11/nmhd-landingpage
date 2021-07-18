@@ -11,13 +11,19 @@ import CheckoutPage from './pages/Checkout/index.jsx';
 import PhoneRing from './components/PhoneRing/PhoneRing.jsx';
 import NewsPage from './pages/News/index.jsx';
 const theme = extendTheme({
+  fonts: {
+    heading: 'Roboto Condensed',
+    body: 'Roboto Condensed',
+  },
   colors: {
     primary: '#E92529',
   },
   components: {
     Link: {
-      _hover: {
-        textDecoration: 'none',
+      baseStyle: {
+        _hover: {
+          textDecoration: 'none',
+        },
       },
     },
     Input: {

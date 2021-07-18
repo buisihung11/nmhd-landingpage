@@ -10,7 +10,9 @@ import {
   Center,
   Heading,
   HStack,
+  Icon,
 } from '@chakra-ui/react';
+import { AiFillFacebook, AiFillYoutube } from 'react-icons/ai';
 
 import footerImage from '../assets/images/footer.jpg';
 import Link from './Link';
@@ -64,8 +66,8 @@ export default function Footer() {
       bgRepeat="no-repeat"
       bgSize="cover"
       bgPosition="center"
-      px={3}
-      py={5}
+      px={[6, 14]}
+      py={[6, 10]}
     >
       <Box textAlign="center" mx="auto" py={5}>
         <Heading color="primary" textTransform="uppercase">
@@ -75,18 +77,27 @@ export default function Footer() {
           Trăm năm một chữ tín
         </Heading>
       </Box>
-      <SimpleGrid minChildWidth="150px" spacing="40px">
+      <SimpleGrid
+        fontSize={{ base: 'sm' }}
+        minChildWidth="150px"
+        spacing={['15px', '40px']}
+      >
         <Stack align={'flex-start'}>
           <ListHeader>Theo dõi</ListHeader>
-          <Link to={'#'}>Tutorials</Link>
-          <Link to={'#'}>Pricing</Link>
-          <Link to={'#'}>Releases</Link>
+          <HStack spacing={2}>
+            <Link to={'#'}>
+              <Icon color="facebook.300" w={10} h={10} as={AiFillFacebook} />
+            </Link>
+            <Link to={'#'}>
+              <Icon color="red.500" w={10} h={10} as={AiFillYoutube} />
+            </Link>
+          </HStack>
         </Stack>
         <Stack align={'flex-start'}>
           <ListHeader>Về chúng tôi</ListHeader>
-          <Link to={'#'}>Thông tin</Link>
-          <Link to={'#'}>Sản phẩm</Link>
-          <Link to={'#'}>Liên lạc</Link>
+          <Link to={'/tin-tuc'}>Thông tin</Link>
+          <Link to={'/san-pham'}>Sản phẩm</Link>
+          <Link to={'/lien-he'}>Liên lạc</Link>
         </Stack>
         <Stack align={'flex-start'}>
           <ListHeader>Hoạt động</ListHeader>
