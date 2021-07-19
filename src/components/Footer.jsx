@@ -78,7 +78,7 @@ export default function Footer() {
         </Heading>
       </Box>
       <SimpleGrid
-        fontSize={{ base: 'sm' }}
+        fontSize={['sm', 'md', 'lg']}
         minChildWidth="150px"
         spacing={['15px', '40px']}
       >
