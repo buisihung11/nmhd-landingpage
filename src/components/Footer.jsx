@@ -11,10 +11,12 @@ import {
   Heading,
   HStack,
   Icon,
+  Image,
 } from '@chakra-ui/react';
 import { AiFillFacebook, AiFillYoutube } from 'react-icons/ai';
 
 import footerImage from '../assets/images/footer.jpg';
+import sloganImage from '../assets/images/SLOGAN.png';
 import Link from './Link';
 
 const Logo = props => {
@@ -69,13 +71,8 @@ export default function Footer() {
       px={[6, 14]}
       py={[6, 10]}
     >
-      <Box textAlign="center" mx="auto" py={5}>
-        <Heading color="primary" textTransform="uppercase">
-          Nước mắm Hồng Đức
-        </Heading>
-        <Heading fontSize={['lg', 'xl']} color="blue.700">
-          Trăm năm một chữ tín
-        </Heading>
+      <Box textAlign="center" mx="auto" py={5} mb={4}>
+        <Image mx="auto" w={['80%', '60%']} src={sloganImage} />
       </Box>
       <SimpleGrid
         fontSize={['sm', 'md', 'lg']}
