@@ -23,6 +23,7 @@ import { PRODUCTS_HOME } from '../Home';
 import ProductCard from '../../components/ProductCard';
 import Link from '../../components/Link';
 import ScrollToTopOnMount from '../../components/ScrollToTop';
+import GetMoreBtn from '../../components/GetMoreBtn';
 
 const settings = {
   dots: false,
@@ -158,7 +159,7 @@ const ProductDetailPage = () => {
               Sản phẩm tương tự
             </Heading>
           </Box>
-          <Box flex={1}>
+          <Box flex={1} alignSelf="flex-end" pb="6px">
             <Divider />
           </Box>
         </HStack>
@@ -168,9 +169,7 @@ const ProductDetailPage = () => {
           ))}
         </SimpleGrid>
         <Box w="full" textAlign={['center', 'center', 'end']}>
-          <Button mt={6} color="white" rounded="none" variant="primary">
-            Xem thêm
-          </Button>
+          <GetMoreBtn />
         </Box>
       </Container>
     </Box>

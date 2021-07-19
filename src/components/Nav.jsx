@@ -39,19 +39,16 @@ export default function Navigation({ navStyle = {} }) {
         bg={'transparent'}
         color={useColorModeValue('gray.600', 'white')}
         minH={'60px'}
-        py={[4, 8]}
+        py={[4, 4]}
         align={'center'}
         w={['90%']}
         mx="auto"
       >
-        <Flex
-          flex={{ base: 1 }}
-          justify={{ base: 'space-between' }}
-        >
+        <Flex flex={{ base: 1 }} justify={{ base: 'space-between' }}>
           <Link to="/">
             <Image
-              w={['61px', '61px', '90px', '90px']}
-              h={['43px', '43px', '64px', '64px']}
+              w={['61px', '61px', '90px', '172px']}
+              h={['43px', '43px', '64px', '122px']}
               objectFit="cover"
               src={logo}
               alt="NMHD Logo"

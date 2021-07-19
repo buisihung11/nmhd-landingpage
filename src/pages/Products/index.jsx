@@ -9,6 +9,7 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import Banner from '../../components/Banner';
+import GetMoreBtn from '../../components/GetMoreBtn';
 import ProductCard from '../../components/ProductCard';
 import ScrollToTopOnMount from '../../components/ScrollToTop';
 import { PRODUCTS_HOME } from '../Home';
@@ -52,14 +53,14 @@ const ProductListPage = () => {
               <HStack w="full" textAlign="left" mb="6">
                 <Box>
                   <Heading
-                    fontSize={['lg', 'xl', '2xl']}
+                    fontSize={['lg', '2xl', '3xl']}
                     textAlign="left"
                     textTransform="uppercase"
                   >
                     {master.name}
                   </Heading>
                 </Box>
-                <Box flex={1}>
+                <Box flex={1} alignSelf="flex-end" pb="6px">
                   <Divider />
                 </Box>
               </HStack>
@@ -73,9 +74,7 @@ const ProductListPage = () => {
                 ))}
               </SimpleGrid>
               <Box w="full" textAlign={['center', 'center', 'end']}>
-                <Button mt={6} color="white" rounded="none" variant="primary">
-                  Xem thêm
-                </Button>
+                <GetMoreBtn />
               </Box>
             </Box>
           ))}

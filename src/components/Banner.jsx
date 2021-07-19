@@ -50,7 +50,28 @@ const settings = {
   appendDots: (dots, ...res) => {
     return <Box>{dots}</Box>;
   },
-  customPaging: i => <Box w="4" h="4" color="primary" />,
+  customPaging: i => (
+    <Box
+      p={1}
+      _groupHover={{
+        border: `1px solid red`,
+      }}
+      border={`1px solid white`}
+      rounded="full"
+      className="dot_child"
+    >
+      <Box
+        _groupHover={{
+          bg: 'primary',
+        }}
+        rounded="full"
+        w={['10px', '10px']}
+        h={['10px', '10px']}
+        bg="white"
+      />
+    </Box>
+  ),
+  dotsClass: 'slick-dots slick-thumb',
 };
 
 const Banner = ({ color }) => {

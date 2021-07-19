@@ -44,7 +44,7 @@ const ListHeader = ({ children }) => {
       _after={{
         content: `""`,
         position: 'absolute',
-        width: '40%',
+        width: '30px',
         height: '3px',
         bg: 'primary',
         left: 0,
@@ -102,7 +102,9 @@ export default function Footer() {
         <Stack align={'flex-start'}>
           <ListHeader>Hoạt động</ListHeader>
           <Text color="white">Mở cửa các ngày trong tuần: </Text>
-          <Text color="primary">8h30 - 18h00</Text>
+          <Text color="primary" fontWeight="bold">
+            8h30 - 18h00
+          </Text>
         </Stack>
         <Stack>
           <ListHeader>Địa chỉ</ListHeader>
@@ -110,7 +112,7 @@ export default function Footer() {
             477 Nguyễn Huệ, khu phố 8, Phường Dương Đông, Thành phố Phú Quốc,
             Tỉnh Kiên Giang, Việt Nam
           </Text>
-          <Link to={'#'} color="primary">
+          <Link to={'#'} color="primary" fontWeight="bold">
             nuocmamhongduc.com.vn
           </Link>
           <Text>nuocmamhongduc@gmail.com</Text>

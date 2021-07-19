@@ -21,6 +21,7 @@ import PhoneRing from '../../components/PhoneRing/PhoneRing';
 import styled from '@emotion/styled';
 import ScrollToTopOnMount from '../../components/ScrollToTop';
 import Link from '../../components/Link';
+import GetMoreBtn from '../../components/GetMoreBtn';
 
 const FEATURE = [
   {
@@ -82,7 +83,7 @@ const HomePage = () => {
           <HStack
             bg="white"
             position={['absolute']}
-            bottom={['-100px', '-100px', '-80px']}
+            bottom={['-160px', '-140px', '-140px', '-100px']}
             left="50%"
             transform="translate(-50%,0)"
             p="3"
@@ -106,6 +107,7 @@ const HomePage = () => {
                 _hover={{
                   color: 'red',
                   border: `1px solid ${primaryColor}`,
+                  cursor: 'pointer',
                 }}
                 display="flex"
                 alignContent="center"
@@ -138,7 +140,7 @@ const HomePage = () => {
           </HStack>
         </Box>
       </Box>
-      <Box h={['140px', '120px']} />
+      <Box h={['200px', '160px']} />
 
       <Box
         w={['80%', '80%', '80%', '90%']}
@@ -151,16 +153,7 @@ const HomePage = () => {
             <ProductCard {...prod} />
           ))}
         </SimpleGrid>
-        <Button
-          as={Link}
-          to="/san-pham"
-          mt={6}
-          color="white"
-          rounded="none"
-          variant="primary"
-        >
-          Xem thêm
-        </Button>
+        <GetMoreBtn />
       </Box>
     </Box>
   );
