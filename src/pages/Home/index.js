@@ -22,6 +22,8 @@ import styled from '@emotion/styled';
 import ScrollToTopOnMount from '../../components/ScrollToTop';
 import Link from '../../components/Link';
 import GetMoreBtn from '../../components/GetMoreBtn';
+import { getChildProd } from '../../services/product';
+import { useRequest } from 'ahooks';
 
 const FEATURE = [
   {
@@ -54,6 +56,23 @@ export const PRODUCTS_HOME = Array(8).fill({
 
 const HomePage = () => {
   const primaryColor = useColorModeValue('primary', 'white');
+
+  const { data, loading, error } = useRequest(getChildProd);
+
+  console.log(`data`, data);
+
+  if (loading) {
+    return <p>Loading</p>;
+  }
+  if (error) {
+    return (
+      <Box pt={16}>
+        <Center>Đã xảy ra lỗi vui lòng thử lại</Center>
+      </Box>
+    );
+  }
+
+  const products = data?.data;
 
   return (
     <Box pb={5}>
@@ -149,11 +168,13 @@ const HomePage = () => {
         fontSize="xl"
       >
         <SimpleGrid columns={[2, 2, 2, 3, 4]} spacing={[12, 10, 14, 12, 16]}>
-          {PRODUCTS_HOME.map(prod => (
+          {products?.map(prod => (
             <ProductCard {...prod} />
           ))}
         </SimpleGrid>
-        <GetMoreBtn />
+        <Link to={`/san-pham`}>
+          <GetMoreBtn />
+        </Link>
       </Box>
     </Box>
   );

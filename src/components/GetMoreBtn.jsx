@@ -5,7 +5,7 @@ const GetMoreBtn = props => {
   return (
     <Button
       w={['120px', '200px']}
-      mt={6}
+      my={[10, 16]}
       color="white"
       rounded="none"
       variant="primary"

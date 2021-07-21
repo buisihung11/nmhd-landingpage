@@ -2,6 +2,7 @@ import {
   AspectRatio,
   Box,
   Button,
+  Center,
   Container,
   Divider,
   Flex,
@@ -24,6 +25,8 @@ import ProductCard from '../../components/ProductCard';
 import Link from '../../components/Link';
 import ScrollToTopOnMount from '../../components/ScrollToTop';
 import GetMoreBtn from '../../components/GetMoreBtn';
+import { useRequest } from 'ahooks';
+import { getProdDetail } from '../../services/product';
 
 const settings = {
   dots: false,
@@ -36,13 +39,20 @@ const settings = {
 const ProductDetailPage = () => {
   let { seoName } = useParams();
 
-  const getProduct = seoName => {
-    return PRODUCTS_HOME.find(({ name }) => stringToSlug(name) === seoName);
-  };
+  const { data, loading, error } = useRequest(() => getProdDetail(seoName));
 
-  const product = getProduct(seoName);
+  if (loading) {
+    return <p>Loading</p>;
+  }
+  if (error) {
+    return (
+      <Box pt={16}>
+        <Center>Đã xảy ra lỗi vui lòng thử lại</Center>
+      </Box>
+    );
+  }
 
-  const { name, description, thumbnail } = product;
+  const { productName: name, description, thumbnail } = data.data;
 
   const gallery = Array(6).fill(thumbnail);
 
@@ -63,7 +73,7 @@ const ProductDetailPage = () => {
                 <Image objectFit={'cover'} src={thumbnail} />
               </AspectRatio>
               <Box w="full">
-                <MySlider {...settings} spacing="18px">
+                <MySlider color="black" {...settings} spacing="18px">
                   {gallery.map(thumb => (
                     <Image
                       w="100vw"
@@ -99,14 +109,16 @@ const ProductDetailPage = () => {
 
               <Box
                 textAlign="left"
-                dangerouslySetInnerHTML={{
-                  __html: `<p>Một trong những nhà thùng nước mắm truyền thống lâu đời tại Phú Quốc với kinh nghiệm được truyền qua nhiều thế hệ để cho ra nhưng chai nước mắm có mùi vị đậm đà.
-                            Quy trình sản xuất thủ công từ khâu đánh bắt cá cơm đến khâu ra thành phẩm.
-                            Thời gian ủ cá hoàn toàn tự nhiên.
-                            Sản xuất và đóng chai tại Phú Quốc
-                            Giao hàng toàn quốc</p>`,
-                }}
-              />
+                // dangerouslySetInnerHTML={{
+                //   __html: `<p>Một trong những nhà thùng nước mắm truyền thống lâu đời tại Phú Quốc với kinh nghiệm được truyền qua nhiều thế hệ để cho ra nhưng chai nước mắm có mùi vị đậm đà.
+                //             Quy trình sản xuất thủ công từ khâu đánh bắt cá cơm đến khâu ra thành phẩm.
+                //             Thời gian ủ cá hoàn toàn tự nhiên.
+                //             Sản xuất và đóng chai tại Phú Quốc
+                //             Giao hàng toàn quốc</p>`,
+                // }}
+              >
+                {description}
+              </Box>
               <Box textAlign="left">
                 <Heading
                   fontSize={['lg', 'xl']}
