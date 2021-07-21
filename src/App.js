@@ -10,6 +10,7 @@ import ProductDetailPage from './pages/Products/ProductDetail.jsx';
 import CheckoutPage from './pages/Checkout/index.jsx';
 import PhoneRing from './components/PhoneRing/PhoneRing.jsx';
 import NewsPage from './pages/News/index.jsx';
+import axios from 'axios';
 const theme = extendTheme({
   fonts: {
     heading: 'Roboto Condensed',
@@ -63,6 +64,14 @@ const theme = extendTheme({
 });
 
 function App() {
+  React.useEffect(() => {
+    console.log('Test API');
+    axios
+      .get('https://nmhd-api.nothleft.online/api/products')
+      .then(console.log)
+      .catch(console.log);
+  }, []);
+
   return (
     <Router>
       <ChakraProvider theme={theme}>
