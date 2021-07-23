@@ -18,7 +18,7 @@ export default function ProductCard({
   productName: name,
   generalProduct,
   thumbnail,
-  id: slug,
+  sku: slug,
 }) {
   const { productName: description = 'Sản phẩm Nước Mắm Hồng Đức' } =
     generalProduct || {};

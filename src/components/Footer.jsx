@@ -71,8 +71,8 @@ export default function Footer() {
       px={[6, 14]}
       py={[6, 10]}
     >
-      <Box textAlign="center" mx="auto" py={5} mb={4}>
-        <Image mx="auto" w={['80%', '60%']} src={sloganImage} />
+      <Box textAlign="center" mx="auto" py={8} mb={4}>
+        <Image mx="auto" w={['70%', '40%']} src={sloganImage} />
       </Box>
       <SimpleGrid
         fontSize={['sm', 'md', 'lg']}

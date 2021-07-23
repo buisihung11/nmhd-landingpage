@@ -7,16 +7,26 @@ export const getChildProd = () =>
     },
   });
 
-export const getMasterProd = () =>
+export const getMasterProd = params =>
   request.get('/products', {
     params: {
       isParent: true,
+      ...params,
     },
   });
 
-export const getProdDetail = id =>
-  request.get(`/products/${id}`, {
+export const getProdDetail = sku =>
+  request.get(`/products`, {
     params: {
-      isParent: true,
+      isParent: false,
+      sku,
+    },
+  });
+
+export const getRelateProduct = generalProductId =>
+  request.get(`/products`, {
+    params: {
+      isParent: false,
+      generalProductId,
     },
   });

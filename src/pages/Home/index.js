@@ -8,22 +8,19 @@ import {
   Text,
   useColorModeValue,
   SimpleGrid,
-  Button,
   chakra,
   Center,
 } from '@chakra-ui/react';
-import ProductCard from '../../components/ProductCard';
+import { useRequest } from 'ahooks';
 
+import ProductCard from '../../components/ProductCard';
 import { feat_1, feat_2, feat_3, feat_4 } from '../../assets/icons';
-import nuocmam_43 from '../../assets/images/products/nuocmam_43.jpg';
 import Banner from '../../components/Banner';
-import PhoneRing from '../../components/PhoneRing/PhoneRing';
-import styled from '@emotion/styled';
 import ScrollToTopOnMount from '../../components/ScrollToTop';
 import Link from '../../components/Link';
 import GetMoreBtn from '../../components/GetMoreBtn';
 import { getChildProd } from '../../services/product';
-import { useRequest } from 'ahooks';
+import Loading from '../../components/Loading';
 
 const FEATURE = [
   {
@@ -48,12 +45,6 @@ const FEATURE = [
   },
 ];
 
-export const PRODUCTS_HOME = Array(8).fill({
-  name: 'NƯỚC MẮM CÁ CƠM HỒNG ĐỨC',
-  description: '43 ĐỘ ĐẠM (1 CHAI) 500ml',
-  thumbnail: nuocmam_43,
-});
-
 const HomePage = () => {
   const primaryColor = useColorModeValue('primary', 'white');
 
@@ -75,7 +66,7 @@ const HomePage = () => {
   const products = data?.data;
 
   return (
-    <Box pb={5}>
+    <Box pb={5} minH="60vh">
       <ScrollToTopOnMount />
       <Box h="100vh">
         <Box position="relative" h="100vh">
@@ -161,21 +152,25 @@ const HomePage = () => {
       </Box>
       <Box h={['200px', '160px']} />
 
-      <Box
-        w={['80%', '80%', '80%', '90%']}
-        mx="auto"
-        textAlign="center"
-        fontSize="xl"
-      >
-        <SimpleGrid columns={[2, 2, 2, 3, 4]} spacing={[12, 10, 14, 12, 16]}>
-          {products?.map(prod => (
-            <ProductCard {...prod} />
-          ))}
-        </SimpleGrid>
-        <Link to={`/san-pham`}>
-          <GetMoreBtn />
-        </Link>
-      </Box>
+      {loading ? (
+        <Loading />
+      ) : (
+        <Box
+          w={['80%', '80%', '80%', '90%']}
+          mx="auto"
+          textAlign="center"
+          fontSize="xl"
+        >
+          <SimpleGrid columns={[2, 2, 2, 3, 4]} spacing={[12, 10, 14, 12, 16]}>
+            {products?.map(prod => (
+              <ProductCard {...prod} />
+            ))}
+          </SimpleGrid>
+          <Link to={`/san-pham`}>
+            <GetMoreBtn />
+          </Link>
+        </Box>
+      )}
     </Box>
   );
 };

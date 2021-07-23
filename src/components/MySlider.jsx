@@ -19,18 +19,17 @@ const MySlider = styled(Slider)`
       background-color: #e92529;
     }
   }
-  .slick-dots .slick-active .slick-next,
-  .slick-prev {
+  .slick-next {
+    right: -15px;
+    z-index: 10;
     width: 30px;
     height: 30px;
   }
-  .slick-next {
-    right: -10px;
-    z-index: 10;
-  }
   .slick-prev {
-    left: -10px;
+    left: -15px;
     z-index: 10;
+    width: 30px;
+    height: 30px;
   }
   .slick-prev:before,
   .slick-next:before {
@@ -44,6 +43,11 @@ const MySlider = styled(Slider)`
   /* the parent */
   .slick-list {
     margin: 0 -${props => props.spacing ?? '0'};
+  }
+  .slick-dots .slick-active .slick-next,
+  .slick-prev {
+    width: 30px;
+    height: 30px;
   }
 `;
 
