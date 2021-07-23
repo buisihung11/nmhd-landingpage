@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
 const request = Axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL,
+  baseURL: 'https://nmhd-api.nothleft.online/api',
   headers: {
     'content-type': 'application/json; charset=utf-8',
   },
