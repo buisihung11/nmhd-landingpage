@@ -1,5 +1,6 @@
 import { Box, Flex, Heading, HStack, Icon, Text } from '@chakra-ui/react';
 import React from 'react';
+import { FacebookShareButton } from 'react-share';
 import { AiFillFacebook } from 'react-icons/ai';
 import { useGlobal } from '../services/global';
 
@@ -40,7 +41,9 @@ const ContactShare = () => {
         <Text textTransform="uppercase" fontWeight="bold">
           Share:{' '}
         </Text>
-        <Icon w={10} h={10} as={AiFillFacebook} />
+        <FacebookShareButton url={window.location.href}>
+          <Icon w={10} h={10} as={AiFillFacebook} color="facebook.500" />
+        </FacebookShareButton>
       </HStack>
     </Flex>
   );

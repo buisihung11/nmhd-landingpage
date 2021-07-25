@@ -71,9 +71,13 @@ export default function Footer() {
         <Stack align={'flex-start'}>
           <ListHeader>Theo dõi</ListHeader>
           <HStack spacing={2}>
-            <Link to={'#'}>
+            <a
+              href="https://www.facebook.com/hongduc.nuocmamphuquoc"
+              target="_blank"
+              rel="noreferrer"
+            >
               <Icon color="facebook.300" w={10} h={10} as={AiFillFacebook} />
-            </Link>
+            </a>
             <Link to={'#'}>
               <Icon color="red.500" w={10} h={10} as={AiFillYoutube} />
             </Link>

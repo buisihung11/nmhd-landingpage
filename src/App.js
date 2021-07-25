@@ -94,6 +94,10 @@ function App() {
           property="og:image"
           content="https://firebasestorage.googleapis.com/v0/b/nmhd-b7d71.appspot.com/o/images%2Fnha-thung-phu-quoc-8.jpg?alt=media&token=f7eb9dfe-0eca-4c78-8297-e5c471256a8d"
         />
+        <meta name="keywords" content="NƯỚC MẮM PHÚ QUỐC HỒNG ĐỨC" />
+        <meta name="generator" content="NƯỚC MẮM PHÚ QUỐC HỒNG ĐỨC" />
+        <meta property="og:url" content="http://trainghiemphuquoc.vn" />
+        <meta name="robots" content="all" />
       </Helmet>
       <ChakraProvider theme={theme}>
         <Navigation />
