@@ -46,6 +46,8 @@ const ProductListPage = ({ history }) => {
     );
   }
 
+  const reversedArr = [...(masterProds || [])]?.reverse();
+
   return (
     <Box>
       <ScrollToTopOnMount />
@@ -63,7 +65,7 @@ const ProductListPage = ({ history }) => {
           py={[8, 10]}
         >
           <VStack spacing={10}>
-            {masterProds.map(master => (
+            {reversedArr?.map(master => (
               <Box w="full">
                 <HStack w="full" textAlign="left" mb="6">
                   <Box>

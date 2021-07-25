@@ -50,11 +50,6 @@ const HomePage = () => {
 
   const { data, loading, error } = useRequest(getChildProd);
 
-  console.log(`data`, data);
-
-  if (loading) {
-    return <p>Loading</p>;
-  }
   if (error) {
     return (
       <Box pt={16}>
@@ -114,14 +109,21 @@ const HomePage = () => {
           >
             {FEATURE.map(({ title, description, icon }) => (
               <VStack
-                _hover={{
-                  color: 'red',
-                  border: `1px solid ${primaryColor}`,
-                  cursor: 'pointer',
-                }}
+                role="group"
                 display="flex"
                 alignContent="center"
                 w={1 / 4}
+                sx={{
+                  _hover: {
+                    color: 'red',
+                    border: `1px solid ${primaryColor}`,
+                    cursor: 'pointer',
+                    img: {
+                      filter:
+                        'invert(24%) sepia(97%) saturate(2004%) hue-rotate(340deg) brightness(89%) contrast(107%)',
+                    },
+                  },
+                }}
               >
                 <Box height="40px">
                   <Center>
@@ -162,7 +164,7 @@ const HomePage = () => {
           fontSize="xl"
         >
           <SimpleGrid columns={[2, 2, 2, 3, 4]} spacing={[12, 10, 14, 12, 16]}>
-            {products?.map(prod => (
+            {products?.slice(0, 8)?.map(prod => (
               <ProductCard {...prod} />
             ))}
           </SimpleGrid>

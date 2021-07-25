@@ -11,16 +11,15 @@ import {
   Image,
   SimpleGrid,
   Spacer,
-  Spinner,
   Text,
   VStack,
 } from '@chakra-ui/react';
+import { FacebookShareButton } from 'react-share';
 import React from 'react';
 import { Icon } from '@chakra-ui/react';
 import { AiFillFacebook } from 'react-icons/ai';
 import { useParams } from 'react-router';
 import MySlider from '../../components/MySlider';
-import { stringToSlug } from '../../utils';
 import ProductCard from '../../components/ProductCard';
 import Link from '../../components/Link';
 import ScrollToTopOnMount from '../../components/ScrollToTop';
@@ -28,6 +27,7 @@ import GetMoreBtn from '../../components/GetMoreBtn';
 import { useRequest } from 'ahooks';
 import { getProdDetail, getRelateProduct } from '../../services/product';
 import Loading from '../../components/Loading';
+import { useGlobal } from '../../services/global';
 
 const settings = {
   dots: false,
@@ -39,6 +39,15 @@ const settings = {
 
 const ProductDetailPage = ({ history }) => {
   let { seoName } = useParams();
+
+  const { globalState } = useGlobal();
+
+  console.log(`globalState`, globalState);
+  const {
+    providerName1 = 'Ha',
+    providerPhone1 = '0394236351',
+    providerPhone2 = 'Thuy',
+  } = globalState || {};
 
   const { data, loading, error } = useRequest(() => getProdDetail(seoName), {
     formatResult: res => res.data && res.data[0],
@@ -62,10 +71,6 @@ const ProductDetailPage = ({ history }) => {
     );
   }
 
-  const filterByGeneralProductID = generalProdId => {
-    history.push(`/san-pham?generalProductId=${generalProdId}`);
-  };
-  const filterByTag = tag => {};
 
   const {
     productName: name,
@@ -84,32 +89,41 @@ const ProductDetailPage = ({ history }) => {
 
   return (
     <Box
-      w={['80%', '80%', '80%', '90%']}
+      w={['90%', '80%', '80%', '90%']}
       mx="auto"
       textAlign="center"
-      pt={['130px', '170px', '200px']}
+      pt={['110px', '170px', '200px']}
       pb={20}
     >
       <ScrollToTopOnMount />
+      {error && <p>Có lỗi xảy ra</p>}
       {loading ? (
         <Loading />
       ) : (
         <Box>
-          <Flex spacing={[8]} flexWrap="wrap">
+          <Flex spacing={[8]} flexWrap="wrap" alignItems="stretch">
             <Box width={['100%', '45%']} mr={[4, 8, 12]}>
               <VStack w="full" spacing={5}>
-                <AspectRatio width="100%" maxW="full" ratio={1}>
+                <AspectRatio width="100%" ratio={1}>
                   <Image objectFit={'cover'} src={thumbnail} />
                 </AspectRatio>
                 <Box w="full">
-                  <MySlider color="black" {...settings} spacing="25px">
+                  <MySlider
+                    className="slider variable-width"
+                    color="black"
+                    {...settings}
+                    spacing={['10px', '25px']}
+                  >
                     {gallery.map(thumb => (
-                      <Image
-                        w="100vw"
-                        objectFit="cover"
-                        src={thumb}
-                        alt="Segun Adebayo"
-                      />
+                      <Box>
+                        <Image
+                          width={['100px', '100px', '100px', '125px', '180px']}
+                          height={['100px', '100px', '100px', '125px', '180px']}
+                          objectFit="cover"
+                          src={thumb}
+                          alt="Segun Adebayo"
+                        />
+                      </Box>
                     ))}
                   </MySlider>
                 </Box>
@@ -117,51 +131,70 @@ const ProductDetailPage = ({ history }) => {
             </Box>
 
             <Box flex={1} mt={['4', '0']}>
-              <VStack alignItems="start">
+              <VStack alignItems="start" h="100%">
+                <Box
+                  h={{ lg: '415px', xl: '584px' }}
+                  display="flex"
+                  flexDir="column"
+                >
+                  <Container
+                    maxW="container.xl"
+                    textAlign={['center', 'left']}
+                    px={0}
+                    mb={4}
+                  >
+                    <Heading
+                      fontSize={['xl', '2xl']}
+                      fontFamily={'body'}
+                      fontWeight={'bold'}
+                      color="primary"
+                    >
+                      {name}
+                    </Heading>
+                    <Text fontWeight={600} fontSize={['md', 'lg']}>
+                      Giá sản phẩm: Liên hệ
+                    </Text>
+                  </Container>
+
+                  <Box
+                    textAlign="left"
+                    flex={1}
+                    fontSize={{ lg: 'md', xl: 'xl' }}
+                    w={['100%', '90%']}
+                    px={4}
+                    dangerouslySetInnerHTML={{
+                      __html: description,
+                    }}
+                  />
+
+                  <Box textAlign="left" fontSize={['md', 'md', 'lg']}>
+                    <Heading
+                      fontWeight={'800'}
+                      color="primary"
+                      fontSize={['lg', 'xl']}
+                    >
+                      LIÊN HỆ
+                    </Heading>
+                    <Text>
+                      Điện thoại: {providerPhone1} - {providerPhone2}
+                    </Text>
+                    <Text>
+                      Giá sỉ liên hệ: {providerPhone1} ({providerName1})
+                    </Text>
+                  </Box>
+                  <Divider />
+                </Box>
+
                 <Container
                   maxW="container.xl"
-                  textAlign={['center', 'left']}
+                  d="flex"
+                  flexDir="column"
+                  flex={1}
+                  mt={0}
+                  pt={4}
                   px={0}
                 >
-                  <Heading
-                    fontSize={['xl', '2xl']}
-                    fontFamily={'body'}
-                    fontWeight={'bold'}
-                    color="primary"
-                  >
-                    {name}
-                  </Heading>
-                  <Text fontWeight={600} fontSize={['md', 'lg']}>
-                    Giá sản phẩm: Liên hệ
-                  </Text>
-                </Container>
-
-                <Box
-                  textAlign="left"
-                  // dangerouslySetInnerHTML={{
-                  //   __html: `<p>Một trong những nhà thùng nước mắm truyền thống lâu đời tại Phú Quốc với kinh nghiệm được truyền qua nhiều thế hệ để cho ra nhưng chai nước mắm có mùi vị đậm đà.
-                  //             Quy trình sản xuất thủ công từ khâu đánh bắt cá cơm đến khâu ra thành phẩm.
-                  //             Thời gian ủ cá hoàn toàn tự nhiên.
-                  //             Sản xuất và đóng chai tại Phú Quốc
-                  //             Giao hàng toàn quốc</p>`,
-                  // }}
-                >
-                  {description}
-                </Box>
-                <Box textAlign="left">
-                  <Heading
-                    fontSize={['lg', 'xl']}
-                    fontWeight={'800'}
-                    color="primary"
-                  >
-                    Liên hệ
-                  </Heading>
-                  <Text>Điện thoại: 02973.846.205 - 0915.428.829</Text>
-                  <Text>Giá sỉ liên hệ: 0915.428.829 (Chị Nga)</Text>
-                </Box>
-                <Divider />
-                <Container maxW="container.xl" px={0}>
-                  <Box textAlign="left" mb={2}>
+                  <Box textAlign="left" mb={2} fontSize={['lg', 'xl']} flex={1}>
                     <HStack>
                       <Text>Danh mục: </Text>
                       <Link
@@ -181,8 +214,21 @@ const ProductDetailPage = ({ history }) => {
                   </Box>
                   <Flex>
                     <HStack>
-                      <Text>Share: </Text>
-                      <Icon w={10} h={10} as={AiFillFacebook} />
+                      <Text
+                        textTransform="uppercase"
+                        fontWeight="bold"
+                        fontSize={['lg', 'xl']}
+                      >
+                        Share:{' '}
+                      </Text>
+                      <FacebookShareButton url={window.location.href}>
+                        <Icon
+                          w={10}
+                          h={10}
+                          as={AiFillFacebook}
+                          color="facebook.500"
+                        />
+                      </FacebookShareButton>
                     </HStack>
                     <Spacer />
                     <Button
@@ -198,11 +244,11 @@ const ProductDetailPage = ({ history }) => {
           </Flex>
         </Box>
       )}
-      <Container maxW="100%" px={0} mt={[4, 8]}>
-        <HStack w="full" textAlign="left" mb="6">
+      <Container maxW="100%" px={0} mt={[4, 12]}>
+        <HStack w="full" textAlign="left" mb={[6, 8]}>
           <Box>
             <Heading
-              fontSize={['lg', 'xl', '2xl']}
+              fontSize={['lg', '2xl', '3xl']}
               textAlign="left"
               textTransform="uppercase"
             >

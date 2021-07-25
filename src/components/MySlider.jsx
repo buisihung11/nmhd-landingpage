@@ -37,12 +37,21 @@ const MySlider = styled(Slider)`
     font-size: 30px;
     opacity: 1;
   }
-  .slick-slide > div {
-    padding: 0 ${props => props.spacing ?? '0'};
+  .slick-slide {
+    height: auto;
+    & > div {
+      padding: 0 ${props => props.spacing ?? '0'};
+    }
   }
   /* the parent */
   .slick-list {
     margin: 0 -${props => props.spacing ?? '0'};
+  }
+  .slick-track {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
   }
   .slick-dots .slick-active .slick-next,
   .slick-prev {

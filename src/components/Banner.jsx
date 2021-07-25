@@ -4,6 +4,8 @@ import { Box, Image } from '@chakra-ui/react';
 
 import banner1 from '../assets/images/banner1.jpg';
 import MySlider from './MySlider';
+import { useRequest } from 'ahooks';
+import { getBlogPost } from '../services/blog-post';
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -75,29 +77,31 @@ const settings = {
 };
 
 const Banner = ({ color }) => {
+  const { data, loading } = useRequest(() => getBlogPost(2), {
+    formatResult: res => res?.data,
+  });
+
+  const images = data?.map(({ banner }) => banner);
+
   return (
     <MySlider {...settings} color={color}>
-      <Image
-        w="100vw"
-        h="100vh"
-        objectFit="cover"
-        src={banner1}
-        alt="Segun Adebayo"
-      />
-      <Image
-        w="100vw"
-        h="100vh"
-        objectFit="cover"
-        src={banner1}
-        alt="Segun Adebayo"
-      />
-      <Image
-        w="100vw"
-        h="100vh"
-        objectFit="cover"
-        src={banner1}
-        alt="Segun Adebayo"
-      />
+      {images?.map(image => (
+        <Image
+          w="100vw"
+          h="100vh"
+          objectFit="cover"
+          src={image}
+          alt="Segun Adebayo"
+        />
+      )) ?? (
+        <Image
+          w="100vw"
+          h="100vh"
+          objectFit="cover"
+          src={banner1}
+          alt="Segun Adebayo"
+        />
+      )}
     </MySlider>
   );
 };
