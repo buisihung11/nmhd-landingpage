@@ -32,7 +32,7 @@ const AboutUsPage = () => {
           NƯỚC MẮM CÁ CƠM HỒNG ĐỨC
         </Heading>
         <Text fontWeight={600} fontSize={['md', 'lg']}>
-          Giá sản phẩm: Liên hệ
+        TRĂM NĂM HƯƠNG VỊ TRUYỀN THỐNG
         </Text>
       </Container>
       <Box minH="40vh" py={[5, 10]}>

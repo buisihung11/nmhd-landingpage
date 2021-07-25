@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Text } from '@chakra-ui/react';
+import { Box, Center, Container, Heading, Text } from '@chakra-ui/react';
 import { useRequest } from 'ahooks';
 import React from 'react';
 import ContactShare from '../../components/ContactShare';
@@ -16,39 +16,38 @@ const NewsPage = () => {
   const { content = 'Hiện tại chưa có tin tức gì mới' } = data || {};
 
   return (
-    <Container
-      w={['80%', '80%']}
-      maxW="container.lg"
-      pt={['130px', '170px']}
-      px={[5, 10]}
-      pb={[20, 40]}
+    <Box
+      w={['80%', '70%']}
+      mx="auto"
+      textAlign="center"
+      pt={['130px', '170px', '200px']}
+      pb={20}
     >
-      <ScrollToTopOnMount />
-      <Box textAlign="center">
+      <Container maxW="container.xl">
         <Heading
-          fontSize={['2xl', '3xl']}
+          fontSize={['xl', '2xl']}
           fontFamily={'body'}
           fontWeight={'bold'}
           color="primary"
         >
           NƯỚC MẮM CÁ CƠM HỒNG ĐỨC
         </Heading>
-        <Text fontWeight={600} fontSize={['lg', 'xl']}>
+        <Text fontWeight={600} fontSize={['md', 'lg']}>
           TRĂM NĂM HƯƠNG VỊ TRUYỀN THỐNG
         </Text>
+      </Container>
+      <Box minH="40vh" py={[5, 10]}>
+        <Center>
+          {loading && <Loading />}
+          {!loading && (
+            <Box mt={4}>
+              <div dangerouslySetInnerHTML={{ __html: content }}></div>
+            </Box>
+          )}
+        </Center>
       </Box>
-
-      <Box py={[5, 10]}>
-        {loading && <Loading />}
-        {!loading && (
-          <Box mt={4}>
-            <div dangerouslySetInnerHTML={{ __html: content }}></div>
-          </Box>
-        )}
-      </Box>
-
       <ContactShare />
-    </Container>
+    </Box>
   );
 };
 

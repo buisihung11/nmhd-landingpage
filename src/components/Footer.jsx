@@ -15,7 +15,6 @@ import sloganImage from '../assets/images/SLOGAN.png';
 import { useGlobal } from '../services/global';
 import Link from './Link';
 
-
 const ListHeader = ({ children }) => {
   return (
     <Box
@@ -90,19 +89,25 @@ export default function Footer() {
           <ListHeader>Hoạt động</ListHeader>
           <Text color="white">Mở cửa các ngày trong tuần: </Text>
           <Text color="primary" fontWeight="bold">
-            {startTime} - {endTime}
+            {startTime?.slice(-8)} - {endTime?.slice(-8)}
           </Text>
         </Stack>
         <Stack>
           <ListHeader>Địa chỉ</ListHeader>
           <Text color="white">{address}</Text>
-          <Link to={'#'} color="primary" fontWeight="bold">
+          <Link to={websiteURL} color="primary" fontWeight="bold">
             {websiteURL}
           </Link>
           <Box pt={4}>
-            <Text>{providerMail1}</Text>
-            <Text>{providerPhone1}</Text>
-            <Text>{providerPhone2}</Text>
+            <a href={`mailto:${providerMail1}`}>
+              <Text>{providerMail1}</Text>
+            </a>
+            <Text>
+              <a href={`tel:${providerPhone1}`}>{providerPhone1}</a>
+            </Text>
+            <Text>
+              <a href={`tel:${providerPhone2}`}>{providerPhone2}</a>
+            </Text>
           </Box>
         </Stack>
       </SimpleGrid>

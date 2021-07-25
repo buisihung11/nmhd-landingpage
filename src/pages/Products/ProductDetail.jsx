@@ -181,10 +181,16 @@ const ProductDetailPage = ({ history }) => {
                       LIÊN HỆ
                     </Heading>
                     <Text>
-                      Điện thoại: {providerPhone1} - {providerPhone2}
+                      Điện thoại:
+                      <a href={`tel:${providerPhone1}`}>
+                        {providerPhone1}
+                      </a> -{' '}
+                      <a href={`tel:${providerPhone2}`}>{providerPhone2}</a>
                     </Text>
                     <Text>
-                      Giá sỉ liên hệ: {providerPhone1} ({providerName1})
+                      Giá sỉ liên hệ:
+                      <a href={`tel:${providerPhone1}`}>{providerPhone1}</a> (
+                      {providerName1})
                     </Text>
                   </Box>
                   <Divider />
@@ -199,7 +205,7 @@ const ProductDetailPage = ({ history }) => {
                   pt={4}
                   px={0}
                 >
-                  <Box textAlign="left" mb={2} fontSize={['lg', 'xl']} flex={1}>
+                  <Box textAlign="left" mb={2} fontSize={['md', 'lg']} flex={1}>
                     <HStack>
                       <Text>Danh mục: </Text>
                       <Link
