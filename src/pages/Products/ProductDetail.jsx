@@ -28,6 +28,14 @@ import { useRequest } from 'ahooks';
 import { getProdDetail, getRelateProduct } from '../../services/product';
 import Loading from '../../components/Loading';
 import { useGlobal } from '../../services/global';
+import {
+  facebook,
+  fb_black,
+  GooglePlus,
+  Linkin,
+  Mail,
+  twitter,
+} from '../../assets/icons';
 
 const settings = {
   dots: false,
@@ -103,7 +111,7 @@ const ProductDetailPage = ({ history }) => {
           <Flex spacing={[8]} flexWrap="wrap" alignItems="stretch">
             <Box width={['100%', '45%']} mr={[4, 8, 12]}>
               <VStack w="full" spacing={5}>
-                <AspectRatio width="100%" ratio={1}>
+                <AspectRatio height="523px" width="100%" ratio={1}>
                   <Image objectFit={'cover'} src={thumbnail} />
                 </AspectRatio>
                 <Box w="full">
@@ -138,7 +146,7 @@ const ProductDetailPage = ({ history }) => {
             >
               <VStack alignItems="start" w="100%" h="100%">
                 <Box
-                  h={{ lg: '415px', xl: '584px' }}
+                  h={{ lg: '415px', xl: '523px' }}
                   display="flex"
                   flexDir="column"
                 >
@@ -149,14 +157,14 @@ const ProductDetailPage = ({ history }) => {
                     mb={4}
                   >
                     <Heading
-                      fontSize={['xl', '2xl']}
+                      fontSize={['2xl', '3xl']}
                       fontFamily={'body'}
                       fontWeight={'bold'}
                       color="primary"
                     >
                       {name}
                     </Heading>
-                    <Text fontWeight={600} fontSize={['md', 'lg']}>
+                    <Text fontWeight={600} fontSize={['lg', 'xl']}>
                       Giá sản phẩm: Liên hệ
                     </Text>
                   </Container>
@@ -164,7 +172,7 @@ const ProductDetailPage = ({ history }) => {
                   <Box
                     textAlign="left"
                     flex={1}
-                    fontSize={{ lg: 'md', xl: 'xl' }}
+                    fontSize={{ lg: 'md', xl: '2xl' }}
                     w={['100%', '90%']}
                     px={4}
                     dangerouslySetInnerHTML={{
@@ -172,11 +180,11 @@ const ProductDetailPage = ({ history }) => {
                     }}
                   />
 
-                  <Box textAlign="left" fontSize={['md', 'md', 'lg']}>
+                  <Box textAlign="left" fontSize={['lg', 'xl', '2xl']}>
                     <Heading
                       fontWeight={'800'}
                       color="primary"
-                      fontSize={['lg', 'xl']}
+                      fontSize={['xl', '2xl']}
                     >
                       LIÊN HỆ
                     </Heading>
@@ -223,7 +231,7 @@ const ProductDetailPage = ({ history }) => {
                       </Text>
                     </HStack>
                   </Box>
-                  <Flex>
+                  <Flex flexWrap="wrap">
                     <HStack>
                       <Text
                         textTransform="uppercase"
@@ -233,18 +241,20 @@ const ProductDetailPage = ({ history }) => {
                         Share:{' '}
                       </Text>
                       <FacebookShareButton url={window.location.href}>
-                        <Icon
-                          w={10}
-                          h={10}
-                          as={AiFillFacebook}
-                          color="facebook.500"
-                        />
+                        <Image w={'28px'} h={'28px'} src={fb_black} />
                       </FacebookShareButton>
+                      <Image w={'28px'} h={'28px'} src={twitter} />
+                      <Image w={'28px'} h={'28px'} src={Linkin} />
+                      <Image w={'28px'} h={'28px'} src={GooglePlus} />
+                      <Image w={'28px'} h={'28px'} src={Mail} />
                     </HStack>
                     <Spacer />
                     <Button
+                      w={['150px', '150px', '150px', '200px']}
                       onClick={() => history.push('/thanh-toan', data)}
                       variant="primary"
+                      fontSize="xl"
+                      mt={{ base: 4, md: 4, lg: 0 }}
                     >
                       ĐẶT DỊCH VỤ
                     </Button>

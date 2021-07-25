@@ -9,6 +9,7 @@ import {
   Image,
 } from '@chakra-ui/react';
 import { AiFillFacebook, AiFillYoutube } from 'react-icons/ai';
+import { facebook, youtube } from '../assets/icons';
 
 import footerImage from '../assets/images/footer.jpg';
 import sloganImage from '../assets/images/SLOGAN.png';
@@ -61,7 +62,7 @@ export default function Footer() {
       py={[6, 10]}
     >
       <Box textAlign="center" mx="auto" py={8} mb={4}>
-        <Image mx="auto" w={['70%', '40%']} src={sloganImage} />
+        <Image mx="auto" w={['70%', '35%']} src={sloganImage} />
       </Box>
       <SimpleGrid
         fontSize={['sm', 'md', 'lg']}
@@ -76,10 +77,10 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
             >
-              <Icon color="facebook.300" w={10} h={10} as={AiFillFacebook} />
+              <Image w={'28px'} h={'28px'} src={facebook} />
             </a>
             <Link to={'#'}>
-              <Icon color="red.500" w={10} h={10} as={AiFillYoutube} />
+              <Image w={'28px'} h={'28px'} src={youtube} />
             </Link>
           </HStack>
         </Stack>
@@ -98,11 +99,14 @@ export default function Footer() {
         </Stack>
         <Stack>
           <ListHeader>Địa chỉ</ListHeader>
-          <Text color="white">{address}</Text>
-          <Link to={websiteURL} color="primary" fontWeight="bold">
-            {websiteURL}
-          </Link>
+          <Text w="50%" color="white">
+            {address}
+          </Text>
+
           <Box pt={4}>
+            <Link to={websiteURL} color="primary" fontWeight="bold">
+              {websiteURL}
+            </Link>
             <a href={`mailto:${providerMail1}`}>
               <Text>{providerMail1}</Text>
             </a>
