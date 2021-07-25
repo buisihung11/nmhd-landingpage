@@ -15,6 +15,7 @@ import { useRequest } from 'ahooks';
 import { getStoreConfig } from './services/store.js';
 import { GlobalProvider, useGlobal } from './services/global.js';
 import AboutUsPage from './pages/AboutUs/index.jsx';
+import NewListPage from './pages/News/NewList.jsx';
 const theme = extendTheme({
   fonts: {
     heading: 'Roboto Condensed',
@@ -114,7 +115,8 @@ function App() {
               component={ProductDetailPage}
             />
             <Route exact path="/thanh-toan" component={CheckoutPage} />
-            <Route exact path="/tin-tuc" component={NewsPage} />
+            <Route exact path="/tin-tuc/:id" component={NewsPage} />
+            <Route exact path="/tin-tuc" component={NewListPage} />
             <Route exact path="/gioi-thieu" component={AboutUsPage} />
           </Switch>
         </Box>

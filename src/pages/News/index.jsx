@@ -1,16 +1,18 @@
 import { Box, Center, Container, Heading, Text } from '@chakra-ui/react';
 import { useRequest } from 'ahooks';
 import React from 'react';
+import { useParams } from 'react-router';
 import ContactShare from '../../components/ContactShare';
 import Loading from '../../components/Loading';
 import ScrollToTopOnMount from '../../components/ScrollToTop';
-import { getBlogPost } from '../../services/blog-post';
+import { getBlogPost, getBlogPostById } from '../../services/blog-post';
 
 const NEWS_TYPE = 0;
 
 const NewsPage = () => {
-  const { data, loading } = useRequest(() => getBlogPost(NEWS_TYPE), {
-    formatResult: res => res?.data[0],
+  let { id } = useParams();
+  const { data, loading } = useRequest(() => getBlogPostById(id), {
+    formatResult: res => res?.data,
   });
 
   const { content = 'Hiện tại chưa có tin tức gì mới' } = data || {};

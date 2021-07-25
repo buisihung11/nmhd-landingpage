@@ -6,3 +6,4 @@ export const getBlogPost = type =>
       blogPostType: type ?? -1,
     },
   });
+export const getBlogPostById = id => request.get(`/blogposts/${id}`);

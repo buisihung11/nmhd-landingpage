@@ -29,7 +29,7 @@ const ListHeader = ({ children }) => {
         left: 0,
       }}
     >
-      <Text textTransform="uppercase" fontWeight={'500'} fontSize={'lg'}>
+      <Text textTransform="uppercase" fontWeight={'bold'} fontSize={'lg'}>
         {children}
       </Text>
     </Box>
