@@ -52,12 +52,12 @@ const NewListPage = () => {
             <Link to={`/tin-tuc/${newBlog.id}`}>
               <Box bg="#E4E4E4" p={4} mb={[4, 8]} borderRadius="md">
                 <Flex flexDir={['column', 'row']} alignItems="start">
-                  <Image w="280px" h="185px" src={newBlog.banner} />
-                  <Box px={2} textAlign="left">
+                  <Image w={('100%', '280px')} h="185px" src={newBlog.banner} />
+                  <Box px={[0, 8]} pt={[4, 0]} textAlign="left">
                     <Heading size="lg">{newBlog.title}</Heading>
                     <Box
                       maxH="100px"
-                      overflowY="clip"
+                      overflowY="hidden"
                       dangerouslySetInnerHTML={{
                         __html: newBlog.content ?? 'Đang cập nhật',
                       }}
