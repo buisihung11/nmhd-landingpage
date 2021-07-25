@@ -71,7 +71,6 @@ const ProductDetailPage = ({ history }) => {
     );
   }
 
-
   const {
     productName: name,
     description,
@@ -130,8 +129,14 @@ const ProductDetailPage = ({ history }) => {
               </VStack>
             </Box>
 
-            <Box flex={1} mt={['4', '0']}>
-              <VStack alignItems="start" h="100%">
+            <Box
+              maxW={['90%', '100%']}
+              textAlign="center"
+              flex={1}
+              mt={['4', '0']}
+              marginX="auto"
+            >
+              <VStack alignItems="start" w="100%" h="100%">
                 <Box
                   h={{ lg: '415px', xl: '584px' }}
                   display="flex"
@@ -244,7 +249,7 @@ const ProductDetailPage = ({ history }) => {
           </Flex>
         </Box>
       )}
-      <Container maxW="100%" px={0} mt={[4, 12]}>
+      <Container maxW={['90%', '100%']} px={0} mt={[8, 12]}>
         <HStack w="full" textAlign="left" mb={[6, 8]}>
           <Box>
             <Heading
@@ -259,7 +264,11 @@ const ProductDetailPage = ({ history }) => {
             <Divider />
           </Box>
         </HStack>
-        <SimpleGrid columns={[2, 2, 2, 3, 4]} spacing={[12, 10, 14, 12, 16]}>
+        <SimpleGrid
+          columns={[2, 2, 2, 3, 4]}
+          spacing={[16, 10, 14, 12, 16]}
+          spacingY={[4, 8]}
+        >
           {relateProducts?.slice(0, 8).map(prod => (
             <ProductCard {...prod} />
           ))}
