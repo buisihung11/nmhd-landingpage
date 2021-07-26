@@ -43,11 +43,11 @@ export default function Footer() {
   const {
     address = `477 Nguyễn Huệ, khu phố 8, Phường Dương Đông, Thành phố Phú Quốc, Tỉnh Kiên Giang, Việt Nam`,
     endTime = '2021-07-18T10:00:00',
-    providerMail1 = 'buisihung321@gmail.com',
-    providerPhone1 = '0394236351',
+    providerMail1 = 'nuocmamhongduc@gmail.com',
+    providerPhone1 = '02973.846.205',
     providerPhone2 = 'Thuy',
     startTime = '2021-07-18T07:00:00',
-    websiteURL = 'http://nmhd-fe.nothleft.online/thanh-toan',
+    websiteURL = 'http://nuocmamhongduc.com.vn',
   } = globalState || {};
 
   return (
@@ -56,15 +56,30 @@ export default function Footer() {
       color={useColorModeValue('white', 'white')}
       backgroundImage={`url(${footerImage})`}
       bgRepeat="no-repeat"
+      sx={{ filter: 'blur(30)' }}
       bgSize="cover"
       bgPosition="center"
       px={[6, 14]}
       py={[6, 10]}
+      pos="relative"
     >
-      <Box textAlign="center" mx="auto" py={8} mb={4}>
+      <Box
+        w="100%"
+        h="100%"
+        pos="absolute"
+        top="0"
+        left="0"
+        zIndex="1"
+        sx={{
+          backdropFilter: 'blur(2px)',
+        }}
+      />
+      <Box zIndex="2" pos="relative" textAlign="center" mx="auto" py={8} mb={4}>
         <Image mx="auto" w={['70%', '35%']} src={sloganImage} />
       </Box>
       <SimpleGrid
+        zIndex="2"
+        pos="relative"
         fontSize={['sm', 'md', 'lg']}
         minChildWidth="150px"
         spacing={['15px', '40px']}
@@ -94,12 +109,13 @@ export default function Footer() {
           <ListHeader>Hoạt động</ListHeader>
           <Text color="white">Mở cửa các ngày trong tuần: </Text>
           <Text color="primary" fontWeight="bold">
-            {startTime?.slice(-8)} - {endTime?.slice(-8)}
+            {startTime?.slice(-8).slice(0, 5)} -{' '}
+            {endTime?.slice(-8).slice(0, 5)}
           </Text>
         </Stack>
         <Stack>
           <ListHeader>Địa chỉ</ListHeader>
-          <Text w="50%" color="white">
+          <Text w={['90%', '60%', '70%', '50%']} color="white">
             {address}
           </Text>
 
