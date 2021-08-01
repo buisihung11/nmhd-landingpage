@@ -41,17 +41,17 @@ export default function ProductCard({
           boxShadow: '2xl',
         }}
       >
-        <Box pt={['15px', '40px']} position="relative">
+        <Box pt={['20px', '40px']} position="relative">
           <Image
             w={['127px', '243px']}
             h={['127px', '243px']}
             rounded={'lg'}
             mx="auto"
-            objectFit={'cover'}
+            objectFit={'contain'}
             src={thumbnail}
           />
           <Box
-            top={['5px', '10px']}
+            top={['0px', '10px']}
             left={['5px', '15px']}
             bg="white"
             p={1}
