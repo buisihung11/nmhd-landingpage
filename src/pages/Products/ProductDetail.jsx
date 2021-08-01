@@ -113,8 +113,12 @@ const ProductDetailPage = ({ history }) => {
           <Flex spacing={[8]} flexWrap="wrap" alignItems="stretch">
             <Box width={['100%', '45%']} mr={[4, 8, 12]}>
               <VStack w="full" spacing={5}>
-                <AspectRatio height="523px" width="100%" ratio={1}>
-                  <Image objectFit={'cover'} src={thumbnail} />
+                <AspectRatio
+                  height={{ xs: '345px', md: '523px' }}
+                  width="100%"
+                  ratio={1}
+                >
+                  <Image objectFit={'contain'} src={thumbnail} />
                 </AspectRatio>
                 <Box w="full">
                   <MySlider
@@ -128,7 +132,7 @@ const ProductDetailPage = ({ history }) => {
                         <Image
                           width={['100px', '100px', '100px', '125px', '180px']}
                           height={['100px', '100px', '100px', '125px', '180px']}
-                          objectFit="cover"
+                          objectFit="contain"
                           src={thumb}
                           alt="Segun Adebayo"
                         />
