@@ -48,13 +48,14 @@ export default function Footer() {
     providerPhone2 = 'Thuy',
     startTime = '2021-07-18T07:00:00',
     websiteURL = 'http://nuocmamhongduc.com.vn',
+    footerImageUrl,
   } = globalState || {};
 
   return (
     <Box
       bg={useColorModeValue('gray.50', 'gray.900')}
       color={useColorModeValue('white', 'white')}
-      backgroundImage={`url(${footerImage})`}
+      backgroundImage={`url(${footerImageUrl ?? footerImage})`}
       bgRepeat="no-repeat"
       sx={{ filter: 'blur(30)' }}
       bgSize="cover"

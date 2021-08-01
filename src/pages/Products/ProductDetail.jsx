@@ -59,12 +59,14 @@ const ProductDetailPage = ({ history }) => {
 
   const { data, loading, error } = useRequest(() => getProdDetail(seoName), {
     formatResult: res => res.data && res.data[0],
+    refreshDeps: [seoName],
   });
   const { data: relateProducts } = useRequest(
-    () => getRelateProduct(data.generalProductId),
+    () => getRelateProduct(data?.generalProductId),
     {
       formatResult: res => res.data,
       ready: !!data?.generalProductId,
+      refreshDeps: [data?.generalProductId],
     }
   );
 
@@ -92,7 +94,7 @@ const ProductDetailPage = ({ history }) => {
 
   const { productName } = generalProduct;
 
-  const gallery = Array(6).fill(thumbnail);
+  const gallery = Array(3).fill(thumbnail);
 
   return (
     <Box

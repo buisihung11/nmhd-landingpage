@@ -27,7 +27,7 @@ export default function ProductCard({
     <Link height="100%" to={`/san-pham/${slug}`}>
       <Box
         role={'group'}
-        p={[0, 4]}
+        p={[2, 4]}
         maxW={'330px'}
         w={['127px', '274px']}
         bg={useColorModeValue('white', 'gray.800')}
