@@ -41,7 +41,7 @@ export default function ProductCard({
           boxShadow: '2xl',
         }}
       >
-        <Box pt={['10px', '40px']} position="relative">
+        <Box pt={['15px', '40px']} position="relative">
           <Image
             w={['127px', '243px']}
             h={['127px', '243px']}
@@ -51,8 +51,8 @@ export default function ProductCard({
             src={thumbnail}
           />
           <Box
-            top={['10px', '20px']}
-            left={['10px', '20px']}
+            top={['5px', '10px']}
+            left={['5px', '15px']}
             bg="white"
             p={1}
             position="absolute"
