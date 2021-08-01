@@ -124,7 +124,7 @@ const ProductDetailPage = ({ history }) => {
                     spacing={['10px', '25px']}
                   >
                     {gallery.map(thumb => (
-                      <Box>
+                      <Box p={2} bg="white">
                         <Image
                           width={['100px', '100px', '100px', '125px', '180px']}
                           height={['100px', '100px', '100px', '125px', '180px']}
