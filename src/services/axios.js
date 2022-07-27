@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
 const request = Axios.create({
-  baseURL: 'https://nmhd-api.nothleft.online/api',
+  baseURL: 'https://api-nmhd.nuocmamhongduc.com.vn/api',
   headers: {
     'content-type': 'application/json; charset=utf-8',
   },
