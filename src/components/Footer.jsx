@@ -13,6 +13,7 @@ import { facebook, youtube } from '../assets/icons';
 
 import footerImage from '../assets/images/footer.jpg';
 import sloganImage from '../assets/images/SLOGAN.png';
+import notiPng from '../assets/images/logoSaleNoti.png';
 import { useGlobal } from '../services/global';
 import Link from './Link';
 
@@ -77,6 +78,15 @@ export default function Footer() {
       />
       <Box zIndex="2" pos="relative" textAlign="center" mx="auto" py={8} mb={4}>
         <Image mx="auto" w={['70%', '35%']} src={sloganImage} />
+        <Box mt={6}>
+          <a
+            rel="noreferrer"
+            target="_blank"
+            href={'http://online.gov.vn/Home/WebDetails/102355'}
+          >
+            <Image mx="auto" w={['50%', '35%', '25%']} src={notiPng} />
+          </a>
+        </Box>
       </Box>
       <SimpleGrid
         zIndex="2"
@@ -135,7 +145,22 @@ export default function Footer() {
             </Text>
           </Box>
         </Stack>
+        
       </SimpleGrid>
+      <Stack mt={[2,4]} zIndex="3" position="relative">
+          <ListHeader>THÔNG TIN CHUNG - CHÍNH SÁCH</ListHeader>
+          <Link to={'/'}>Thông tin sở hữu</Link>
+          <Link to={'/'}>Giấy phép An toàn vệ sinh thực phẩm</Link>
+          <Link to={'/'}>Điều kiện giao dịch chung</Link>
+          <Link to={'/'}>Hướng dẫn mua hàng</Link>
+          <Link to={'/'}>Hướng dẫn thanh toán</Link>
+          <Link to={'/'}>Chính sách mua hàng</Link>
+          <Link to={'/'}>Chính sách thanh toán</Link>
+          <Link to={'/'}>Chính sách vận chuyển và giao nhận</Link>
+          <Link to={'/'}>Chính sách kiểm hàng</Link>
+          <Link to={'/'}>Chính sách đổi hàng - hoàn tiền</Link>
+          <Link to={'/'}>Chính sách bảo mật thông tin</Link>
+        </Stack>
     </Box>
   );
 }
