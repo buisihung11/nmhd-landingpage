@@ -16,6 +16,8 @@ import sloganImage from '../assets/images/SLOGAN.png';
 import notiPng from '../assets/images/logoSaleNoti.png';
 import { useGlobal } from '../services/global';
 import Link from './Link';
+import { useRequest } from 'ahooks';
+import { getBlogPost } from '../services/blog-post';
 
 const ListHeader = ({ children }) => {
   return (
@@ -37,8 +39,13 @@ const ListHeader = ({ children }) => {
   );
 };
 
+const FOOTER_TYPE = 3;
+
 export default function Footer() {
   const { globalState } = useGlobal();
+  const { data: footerNavs, loading } = useRequest(() => getBlogPost(FOOTER_TYPE), {
+    formatResult: res => res?.data,
+  });
 
   console.log(`globalState`, globalState);
   const {
@@ -56,7 +63,7 @@ export default function Footer() {
     <Box
       bg={useColorModeValue('gray.50', 'gray.900')}
       color={useColorModeValue('white', 'white')}
-      backgroundImage={`url(${footerImageUrl ?? footerImage})`}
+      backgroundImage={`url(${footerImage})`}
       bgRepeat="no-repeat"
       sx={{ filter: 'blur(30)' }}
       bgSize="cover"
@@ -149,17 +156,9 @@ export default function Footer() {
       </SimpleGrid>
       <Stack mt={[2,4]} zIndex="3" position="relative">
           <ListHeader>THÔNG TIN CHUNG - CHÍNH SÁCH</ListHeader>
-          <Link to={'/'}>Thông tin sở hữu</Link>
-          <Link to={'/'}>Giấy phép An toàn vệ sinh thực phẩm</Link>
-          <Link to={'/'}>Điều kiện giao dịch chung</Link>
-          <Link to={'/'}>Hướng dẫn mua hàng</Link>
-          <Link to={'/'}>Hướng dẫn thanh toán</Link>
-          <Link to={'/'}>Chính sách mua hàng</Link>
-          <Link to={'/'}>Chính sách thanh toán</Link>
-          <Link to={'/'}>Chính sách vận chuyển và giao nhận</Link>
-          <Link to={'/'}>Chính sách kiểm hàng</Link>
-          <Link to={'/'}>Chính sách đổi hàng - hoàn tiền</Link>
-          <Link to={'/'}>Chính sách bảo mật thông tin</Link>
+          {footerNavs?.map((nav) => 
+            <Link key={nav.id} to={`/tin-tuc/${nav.id}#`}>{nav.title}</Link>
+          )}
         </Stack>
     </Box>
   );

@@ -1,7 +1,7 @@
 import { Box, Center, Container, Heading, Text } from '@chakra-ui/react';
 import { useRequest } from 'ahooks';
-import React from 'react';
-import { useParams } from 'react-router';
+import React, { useEffect } from 'react';
+import { useParams, useHistory } from 'react-router';
 import ContactShare from '../../components/ContactShare';
 import Loading from '../../components/Loading';
 import ScrollToTopOnMount from '../../components/ScrollToTop';
@@ -11,10 +11,20 @@ const NEWS_TYPE = 0;
 
 const NewsPage = () => {
   let { id } = useParams();
+  const history = useHistory();
+  
   const { data, loading } = useRequest(() => getBlogPostById(id), {
     formatResult: res => res?.data,
   });
 
+  useEffect(() => {
+    const unlisten = history.listen(() => {
+      window.scrollTo(0, 0);
+    });
+    return () => {
+      unlisten();
+    }
+  }, []);
   const { content = 'Hiện tại chưa có tin tức gì mới' } = data || {};
 
   return (
